@@ -1,46 +1,60 @@
 # Compiler
-CXX      := g++
+CXX := g++
 
+# Flags and libraries
 CXXFLAGS := -Wall -pedantic -std=c++14
 DBGFLAGS := -g -DDEBUG
+LDLIBS   := -lcppunit
 
-BUILD  := build
-TARGET := matcal
+# Directories
+SRCDIR := src
+BLDDIR := build
+OBJDIR := $(BLDDIR)/objs
+DOCDIR := docs
 
-SRC := \
-	$(wildcard src/main/lib/*.cpp) \
-	$(wildcard src/main/*.cpp)
+# File extensions
+SRCEXT = cpp
+OBJEXT = o
 
-OBJS := $(SRC:%.cpp=$(BUILD)/%.o)
+# Binary target name
+TARGET := $(BLDDIR)/program
 
-.PHONY: all compile clean
+# Sources
+SRCS := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 
+# Objects
+OBJS := $(patsubst $(SRCDIR)/%, $(OBJDIR)/%, $(SRCS:.$(SRCEXT)=.$(OBJEXT)))
 
-all: compile doc
+# make
+all: build doc
 
+# make build
+build: $(TARGET)
 
-compile: $(TARGET)
+# make debug
+debug: CXXFLAGS += $(DBGFLAGS)
+debug: build
 
-
-# Create binary target
+# Link
 $(TARGET): $(OBJS)
-	$(CXX) $^ -o $@
+	$(CXX) $^ $(LDLIBS) -o $@
 
-
-# Create object files
-$(BUILD)/%.o: %.cpp
-	mkdir -p $(@D)
+# Compile
+$(OBJDIR)/%.$(OBJEXT): $(SRCDIR)/%.$(SRCEXT)
+	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-
-run: compile
+# make run
+run: build
 	./$(TARGET)
 
-
+# make doc
 doc:
 	doxygen Doxyfile
 
-
+# make clean
 clean:
-	rm -rf $(BUILD)
-	rm -f $(TARGET)
+	rm -rf $(BLDDIR) $(DOCDIR)
+
+
+.PHONY: all build debug run doc clean
