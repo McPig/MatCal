@@ -27,9 +27,5 @@ jobs:
     - name: Build
       run: make debug
 
-  testing:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: CppUnit
-        run: make run
+    - name: Testing
+      run: make run
