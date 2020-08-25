@@ -26,11 +26,9 @@ jobs:
         run: make debug
 
   test:
-    needs: [ build ]
+    needs: build
     runs-on: ubuntu-latests
 
     steps:
-      - uses: actions/checkout@v2
-
       - name: Test
         run: make run
