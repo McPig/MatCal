@@ -1,4 +1,5 @@
 #ifdef DEBUG
+
 #include <cppunit/TestFixture.h>
 #include <cppunit/extensions/HelperMacros.h>
 
@@ -9,7 +10,7 @@ class DescriptorTest : public CppUnit::TestFixture {
 	CPPUNIT_TEST_SUITE(DescriptorTest);
 	CPPUNIT_TEST(testAt);
 	CPPUNIT_TEST_EXCEPTION(testAtOutOfRange, std::out_of_range);
-	CPPUNIT_TEST_SUITE_END();
+	CPPUNIT_TEST_SUITE_END();s
 
 public:
 	void setUp() override;
