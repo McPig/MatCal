@@ -10,7 +10,7 @@ class DescriptorTest : public CppUnit::TestFixture {
 	CPPUNIT_TEST_SUITE(DescriptorTest);
 	CPPUNIT_TEST(testAt);
 	CPPUNIT_TEST_EXCEPTION(testAtOutOfRange, std::out_of_range);
-	CPPUNIT_TEST_SUITE_END();s
+	CPPUNIT_TEST_SUITE_END();
 
 public:
 	void setUp() override;
