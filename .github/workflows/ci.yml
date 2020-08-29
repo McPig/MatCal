@@ -45,4 +45,4 @@ jobs:
         run: |
           echo $HOME
           find $HOME -type f -name program
-          sudo ./MatCal/program
+          sudo ./MatCal/MatCal/program
