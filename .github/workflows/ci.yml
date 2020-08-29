@@ -43,5 +43,5 @@ jobs:
 
       - name: Test
         run: |
-          find $(HOME) -type f -name program
-          sudo ./program
+          find $HOME -type f -name program
+          ./program
