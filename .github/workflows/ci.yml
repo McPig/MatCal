@@ -42,4 +42,6 @@ jobs:
           name: result
 
       - name: Test
-        run: ./build/build/program
+        run: |
+          find $(HOME) -type f -name program
+          ./program
