@@ -29,7 +29,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: result
-          path: build
+          path: .
 
   test:
     needs: build
@@ -43,6 +43,5 @@ jobs:
 
       - name: Test
         run: |
-          echo $HOME
+          pwd
           find $HOME -type f -name program
-          sudo ./MatCal/MatCal/program
