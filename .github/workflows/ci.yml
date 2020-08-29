@@ -44,4 +44,4 @@ jobs:
       - name: Test
         run: |
           sudo chmod +x build/program
-          .build/program
+          ./build/program
