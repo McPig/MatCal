@@ -25,5 +25,21 @@ jobs:
       - name: Build
         run: make debug
 
+      - name: Upload Build
+        uses: actions/upload-artifact@v2
+        with:
+          name: result
+          path: build
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Build
+        uses: actions/download-artifact@v2
+        with:
+          name: result
+
       - name: Test
-        run: make run
+        run: ./build/build/program
