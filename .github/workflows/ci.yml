@@ -43,6 +43,5 @@ jobs:
 
       - name: Test
         run: |
-          pwd
-          find $HOME -type f -name program
-          sudo ./build/program
+          sudo chmod +x ./build/program
+          ./build/program
