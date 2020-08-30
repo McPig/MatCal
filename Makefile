@@ -45,7 +45,7 @@ $(OBJDIR)/%.$(OBJEXT): $(SRCDIR)/%.$(SRCEXT)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # make run
-run: build
+run: $(TARGET)
 	./$(TARGET)
 
 # make doc

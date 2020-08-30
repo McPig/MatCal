@@ -8,11 +8,12 @@
 /**
  * @brief This class is an abstraction that allows to manipulate a one-dimensional array as if it were two-dimensional.
  *
- * The class uses a mapping capable of describing the shape of a matrix or its part (row, column or sub-matrix) in terms
- * of three values:
- *  - starting index,
- *  - pair of sizes,
- *  - pair of strides
+ * Descriptor uses a mapping capable of describing the shape of a matrix or its part (row, column or sub-matrix) in
+ * terms of three values:
+ *  -# starting index,
+ *  -# pair of sizes,
+ *  -# pair of strides
+ *
  * without need to declare nested structures such as two-dimensional array.
  */
 class Descriptor {
@@ -30,7 +31,7 @@ public:
 	/**
 	 * @brief Constructs a new Descriptor, setting sizes to the passed value.
 	 *
-	 * Sets start to 0, sets strides to (columns, 1).
+	 * Sets starting index to 0, sets strides to (columns, 1).
 	 * @param[in] sizes The pair of sizes (rows, columns).
 	 */
 	explicit Descriptor(Pair sizes);
@@ -67,7 +68,7 @@ public:
 	size_t operator()(size_t row, size_t column) const;
 
 	/**
-	 * @brief Maps row and column indices to the actual array index.
+	 * @brief Maps row and column indices to the actual array index. Performs bounds check.
 	 *
 	 * The method automatically checks whether passed values are within the bounds throwing a std::out_of_range
 	 * exception if they are not.
