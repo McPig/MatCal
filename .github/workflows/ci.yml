@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install Dependencies
-        run: sudo apt install libcppunit-dev
+        run: sudo apt install libgtest-dev
 
       - name: Build
         run: make debug

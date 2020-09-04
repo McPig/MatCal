@@ -4,7 +4,7 @@ CXX := g++
 # Flags and libraries
 CXXFLAGS := -Wall -pedantic -std=c++14
 DBGFLAGS := -g -DDEBUG
-LDLIBS   := -lcppunit
+LDLIBS   := -lgtest -lpthread
 
 # Directories
 SRCDIR := src
@@ -46,7 +46,7 @@ $(OBJDIR)/%.$(OBJEXT): $(SRCDIR)/%.$(SRCEXT)
 
 # make run
 run: $(TARGET)
-	./$(TARGET)
+	./$<
 
 # make doc
 doc:
