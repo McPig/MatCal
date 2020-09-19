@@ -1,5 +1,5 @@
-#ifndef MATCAL_BASEMATRIX_H
-#define MATCAL_BASEMATRIX_H
+#ifndef MATCAL_BASEMATRIX_HPP
+#define MATCAL_BASEMATRIX_HPP
 
 #include "Descriptor.hpp"
 
@@ -43,7 +43,7 @@ public:
 	/**
 	 * @brief Defaulted virtual destructor.
 	 */
-	virtual ~BaseMatrix() = default;
+	virtual ~BaseMatrix() noexcept = default;
 
 	/**
 	 * @brief Returns structure describing matrix shape.
@@ -98,7 +98,7 @@ public:
 	 * modification.
 	 * @param[in] row The row index.
 	 * @param[in] column The column index.
-	 * @return Reference to the element stored at position (row, column).
+	 * @return Reference to the const element stored at position (row, column).
 	 */
 	const T & at(size_t row, size_t column) const;
 
@@ -110,7 +110,7 @@ protected:
 	explicit BaseMatrix(const Descriptor & descriptor);
 
 	/**
-	 * Constructs a new BaseMatrix, creating descriptor from the passed values.
+	 * Constructs a new BaseMatrix, creating its descriptor from the passed values.
 	 * @param[in] rows The number of rows.
 	 * @param[in] columns The number of columns.
 	 */
@@ -122,4 +122,4 @@ protected:
 
 #include "BaseMatrix.cpp"
 
-#endif  // MATCAL_BASEMATRIX_H
+#endif  // MATCAL_BASEMATRIX_HPP

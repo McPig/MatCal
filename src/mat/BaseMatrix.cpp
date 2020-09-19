@@ -1,7 +1,7 @@
 #ifndef MATCAL_BASEMATRIX_CPP
 #define MATCAL_BASEMATRIX_CPP
 
-#include "BaseMatrix.h"
+#include "BaseMatrix.hpp"
 
 // ------------
 // Constructors
@@ -14,7 +14,7 @@ BaseMatrix<T>::BaseMatrix(const Descriptor & descriptor):
 
 template<typename T>
 BaseMatrix<T>::BaseMatrix(size_t rows, size_t columns):
-	m_desc {0, {rows, columns,}, {columns, 1}}
+	m_desc {std::move(std::make_pair(rows, columns))}
 {}
 
 
@@ -29,13 +29,13 @@ const Descriptor & BaseMatrix<T>::desc() const {
 
 template<typename T>
 size_t BaseMatrix<T>::n_rows() const {
-	return m_desc.m_sizes.first;
+	return m_desc.sizes().first;
 }
 
 
 template<typename T>
 size_t BaseMatrix<T>::n_cols() const {
-	return m_desc.m_sizes.second;
+	return m_desc.sizes().second;
 }
 
 
@@ -49,6 +49,7 @@ template<typename T>
 T & BaseMatrix<T>::at(size_t row, size_t column) {
 	return *(data() + m_desc.at(row, column));
 }
+
 
 template<typename T>
 const T & BaseMatrix<T>::at(size_t row, size_t column) const {

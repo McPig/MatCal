@@ -18,6 +18,9 @@
  */
 class Descriptor {
 public:
+	/**
+	 * @brief An alias for a pair of non-negative numbers.
+	 */
 	using Pair = std::pair<size_t, size_t>;
 
 	/**
@@ -39,7 +42,7 @@ public:
 	/**
 	 * @brief Defaulted destructor.
 	 */
-	~Descriptor() = default;
+	~Descriptor() noexcept = default;
 
 	/**
 	 * @brief Returns the starting index.
